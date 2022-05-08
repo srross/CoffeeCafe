@@ -4,20 +4,13 @@
     ViewData["Title"] = "Registration";
 }
 
-@*<h1>Create</h1>
-
-<h4>Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">*@
-
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h1>Join the BrewCrew!!</h1>
         <form asp-action="CreateOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @*hidden fields needed by TransactionController.AddOrEdit for updates*@
+            @*hidden fields needed by CustomerController.*@
             <input type="hidden" asp-for="CustomerId" />
             <input type="hidden" asp-for="CreatedDate" />
             <input type="hidden" asp-for="UpdatedDate" />
@@ -57,16 +50,6 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedDate" class="control-label"></label>
-                <input asp-for="UpdatedDate" class="form-control" />
-                <span asp-validation-for="UpdatedDate" class="text-danger"></span>
-            </div>*@
             <div class="row mt-2">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -77,9 +60,6 @@
                     <a asp-action="Index" class="btn btn-secondary w-100">View All</a>
                 </div>
             </div>
-           @* <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </div>*@
         </form>
     </div>
 </div>

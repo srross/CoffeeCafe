@@ -31,20 +31,6 @@ namespace CoffeeCafe.Controllers
         public async Task<IActionResult> CustomerDetail(Customer customer)
         {
             return View(customer);
-
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //var customer = await _context.Customer
-            //    .FirstOrDefaultAsync(m => m.CustomerId == id);
-            //if (customer == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return View(customer);
         }
 
         // GET: Customer/Create
@@ -66,7 +52,9 @@ namespace CoffeeCafe.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateOrEdit([Bind("CustomerId,FirstName,LastName,Email,Phone,IsBrewCrew,Password,ConfirmPassword,CreatedDate,UpdatedDate")] Customer customer)
+        public async Task<IActionResult> CreateOrEdit([Bind("CustomerId,FirstName,LastName,Email," +
+                                                            "Phone,IsBrewCrew,Password,ConfirmPassword," +
+                                                            "CreatedDate,UpdatedDate")] Customer customer)
         {
             if (ModelState.IsValid) // server  side validation
             {
@@ -88,68 +76,11 @@ namespace CoffeeCafe.Controllers
 
                     return RedirectToAction(nameof(Index));
                 }
-
-                //await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
-
-                //await _context.SaveChangesAsync();
-                //Customer.Add(customer);
-                //return RedirectToAction("CustomerDetail", customer);
             }
             return View(customer); // if validation failed
         }
 
-        //// GET: Customer/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var customer = await _context.Customer.FindAsync(id);
-        //    if (customer == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(customer);
-        //}
-
-        // POST: Customer/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FirstName,LastName,Email,Phone,IsBrewCrew,Password,CreatedDate,UpdatedDate")] Customer customer)
-        //{
-        //    if (id != customer.CustomerId)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(customer);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!CustomerExists(customer.CustomerId))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(customer);
-        //}
-
+        // TODO: replace hard delete logic with "isActive" property.
         // GET: Customer/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -168,6 +99,7 @@ namespace CoffeeCafe.Controllers
             return View(customer);
         }
 
+        // TODO: replace hard delete logic with "isActive" property.
         // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -178,10 +110,5 @@ namespace CoffeeCafe.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        //private bool CustomerExists(int id)
-        //{
-        //    return _context.Customer.Any(e => e.CustomerId == id);
-        //}
     }
 }

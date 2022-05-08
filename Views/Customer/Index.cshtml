@@ -27,9 +27,9 @@
                 @Html.DisplayNameFor(model => model.IsBrewCrew)
             </th>
              <th>
-                @*invoke the TransactionController.Create() - parameterless*@
-                <a asp-action="CreatOrEdit" class="btn btn-sm btn-success">
-                    <i class="fa-solid fa-plus"></i>New</a>        
+                  @*invoke the TransactionController.Create() - parameterless*@
+                <a asp-action="CreateOrEdit" class="btn btn-sm btn-success">
+                    <i class="fa-solid fa-plus"></i>New</a>   
             </th>
         </tr>
     </thead>
@@ -52,39 +52,20 @@
                 @Html.DisplayFor(modelItem => item.IsBrewCrew)
             </td>
             <td>
-                <form asp-action="Delete" asp-route-id="@item.CustomerId">
-                    <div class="btn-group btn-group-sm">
-
+                <form-group>
+                    <div class="btn-group btn-group-sm" asp-route-id="@item.CustomerId">
                          <a asp-action="CreateOrEdit" asp-route-id="@item.CustomerId" class="btn btn-warning">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a> 
 
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Confirm Record Deletion: Are you sure?')">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-
+                        <form asp-action="Delete" asp-route-id="@item.CustomerId">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Confirm Record Deletion: Are you sure?')">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
                     </div>
-                </form>
-
-                @*<a asp-action="AddOrEdit" asp-route-id="@item.TransactionId" class="btn btn-warning">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                </a> *@
-
-                @*<a asp-action="Details" asp-route-id="@item.TransactionId">Details</a> |*@
-
-                @*<form-group asp-action="Delete" asp-route-id="@item.TransactionId">
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Confirm Record Deletion: Are you sure?')">
-                       <i class="fa-solid fa-trash-can"></i>
-                    </button>
-                </form-group>*@
-
-                @*<a asp-action="Delete" asp-route-id="@item.TransactionId">Delete</a>*@
+                </form-group>
             </td>
-
-
-           @* <td>
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-            </td>*@
         </tr>
 }
     </tbody>

@@ -1,26 +1,31 @@
 ﻿@model CoffeeCafe.Models.Customer
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Member Profile";
 }
 
-<h1>Details</h1>
-
+<div class="text-center">
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
-        <h1>Welcome @Model.FirstName @Model.LastName!</h1>
-
+        
         @if (Model.IsBrewCrew)
         {
+            <h1>Welcome Back</h1>
+                <h1>@Model.FirstName @Model.LastName!</h1>
             <h2>There is a new special on Sumatran blends!</h2>
+        }
+        else
+        {             
+            <h1>@Model.FirstName @Model.LastName!</h1>
+                <h2>Welcome To the Crew</h2>
+            <h4>Take 50% Your Total Order Today!</h4>
         }
     </div>
     <div class="col-4"></div>
 </div>
-
-@*<div>
-    <h4>Customer</h4>
+</div>
+<div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -53,28 +58,9 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IsBrewCrew)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedDate)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.CustomerId">Edit</a> |
+    <a asp-action="CreateOrEdit" asp-route-id="@Model?.CustomerId">Edit</a>
     <a asp-action="Index">Back to List</a>
 </div>
-*@
